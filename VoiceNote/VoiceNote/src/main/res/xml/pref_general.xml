@@ -1,0 +1,18 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference
+        android:key="@string/pref_key_extended_timeout"
+        android:title="@string/pref_title_extended_timeout"
+        android:summary="@string/pref_description_extended_timeout"
+        android:defaultValue="false"
+    />
+
+    <Preference
+        android:title="@string/pref_title_about"
+        android:summary="@string/pref_description_about"
+        >
+        <intent
+            android:action="android.intent.action.ABOUT"
+            android:targetPackage="com.simplifynowsoftware.voicenote"
+            android:targetClass="com.simplifynowsoftware.voicenote.About" />
+    </Preference>
+</PreferenceScreen>

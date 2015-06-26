@@ -1,0 +1,8 @@
+This package is licensed under the Apache 2.0 license.
+The contents of this license can be found in Apache-LICENSE-2.0.txt.
+
+Except where noted, the code for VoiceNote is copyright Simplify Now, LLC.
+
+
+VoiceNote launcher icon:
+The original microphone image used was a public domain clipart, but the attribution is missing - sorry.

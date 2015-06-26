@@ -1,0 +1,42 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.2.3'
+    }
+}
+apply plugin: 'com.android.application'
+
+repositories {
+    jcenter()
+}
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion '22.0.1'
+
+    buildTypes {
+        release {
+            // see here for more proguard details: http://tools.android.com/tech-docs/new-build-system/resource-shrinking
+            minifyEnabled true // this replaces runProguard as of 0.14.x
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
+        }
+
+        debug {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project-debug.txt'
+        }
+    }
+
+    def config = defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 22
+    }
+    config
+}
+
+dependencies {
+}

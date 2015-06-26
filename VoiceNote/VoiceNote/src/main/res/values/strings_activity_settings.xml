@@ -1,0 +1,30 @@
+<resources>
+    <string name="title_activity_settings">VoiceNote Settings</string>
+
+    <!-- General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_key_extended_timeout">pref_key_extended_timeout</string>
+    <string name="pref_title_extended_timeout">Enable extended timeout</string>
+    <string name="pref_description_extended_timeout">Wait longer before ending capture.</string>
+
+    <string name="pref_title_about">About</string>
+    <string name="pref_description_about">Touch for more information about this app.</string>
+
+    <!-- Data/Associations settings -->
+    <string name="pref_header_data">Associations</string>
+
+    <string name="pref_key_destination">pref_key_destination</string>
+    <string name="pref_title_destination">Send notes to</string>
+    <string-array name="pref_destination_titles">
+        <item>@string/pref_destination_value_keep</item>
+        <item>@string/pref_destination_value_evernote</item>
+        <item>@string/pref_destination_value_colornote</item>
+        <item>@string/pref_destination_value_default</item>
+    </string-array>
+
+    <string name="pref_destination_value_keep">Google Keep</string>
+    <string name="pref_destination_value_evernote">Evernote</string>
+    <string name="pref_destination_value_colornote">Colornote</string>
+    <string name="pref_destination_value_default">System Default</string>
+</resources>
