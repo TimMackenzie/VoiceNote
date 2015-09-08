@@ -1,6 +1,11 @@
 ![VoiceNote](https://github.com/TimMackenzie/VoiceNote/raw/master/VoiceNote.png)
 
 
+Update
+------------
+<b>As of about September 2015, an update to Google Keep makes it unable to accept the text on some devices - for example a device running Android 5.x with multiple accounts.  Instead of creating a new note, it asks the user to pick an account, and after that selection is does nothing at all.  On other devices it works.  This is the danger of using an undocumented API, and the fix isn't immediately apparent.</b>
+
+
 Introduction
 ------------
 
@@ -15,15 +20,15 @@ VoiceNote:
 
 Since I created it for myself, the interface may not be to your liking - there's no main screen at all, which is not normal Android UX.  Go ahead and extend or modify it.  Use this code a a reference, as a starting point for your project, whatever you like.  It is licensed under Apache 2.0.
 
-You can get this app already built from Google Play:
-https://play.google.com/store/apps/details?id=com.simplifynowsoftware.voicenote
+<del>You can get this app already built from Google Play:</del>
+Well, not yet - it's not ready for release on Google Play until the Keep issue is fixed.
 
 What does the app currently do?
--Start capturing immediatly upon start
--Respond to key words: help, preferences, settings, about
--Options:
---Select destination (Keep, Evernote, Colornote, or system picker)
---Options extend timeout if Google thinks you're done talking too soon
+- Start capturing immediatly upon start
+- Respond to key words: help, preferences, settings, about
+- Options:
+ - Select destination (Keep, Evernote, Colornote, or system picker)
+ - Options extend timeout if Google thinks you're done talking too soon
 
 
 License
