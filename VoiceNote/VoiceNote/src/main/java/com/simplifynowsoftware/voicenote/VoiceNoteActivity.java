@@ -55,9 +55,18 @@ public class VoiceNoteActivity extends Activity {
     protected static final String PACKAGE_NAME_COLORNOTE    = "com.socialnmobile.dictapps.notepad.color.note";
     protected static final String PACKAGE_NAME_EVERNOTE     = "com.evernote";
 
+//    protected static final String INTENT_LANDER_KEEP = "com.google.android.keep.BrowseActivity";
+
+    protected static final String INTENT_ACTION_KEEP        = "com.google.android.gms.actions.CREATE_NOTE";
+
     protected static final String MIMETYPE_TEXT_PLAIN           = "text/plain";
     protected static final String ANDROID_SPEECH_EXTRA_RESULTS  = "android.speech.extra.RESULTS";
     protected static final int PARAM_2_NOT_USED                 = -1;
+
+    protected static final String INTENT_EXTRA_AUTH_ACCOUNT       = "authAccount";
+    protected static final String INTENT_EXTRA_ACCOUNT_TYPE       = "accountType";
+    protected static final String INTENT_EXTRA_ACCOUNT_TYPE_VALUE = "com.google";
+
 
     protected boolean mHasRun;
     protected String mDestination;
@@ -190,14 +199,25 @@ public class VoiceNoteActivity extends Activity {
     private void sendTextToTargetPackage(String text, String target) {
         try
         {
+            if(DEBUG_ENABLE) {
+                Log.i("sendTextToTargetPackage", target);
+            }
+
             Intent intent = new Intent();
 
             if(null != target) {
                 intent.setPackage(target);
             }
 
-            intent.setAction(Intent.ACTION_SEND);
             intent.setType(MIMETYPE_TEXT_PLAIN);
+
+            // Extra setup for Keep - pre-select account
+            if(mDestination.equals(getString(R.string.pref_destination_value_keep))) {
+                intent.setAction(INTENT_ACTION_KEEP);
+                //setKeepExtra(intent);
+            } else {
+                intent.setAction(Intent.ACTION_SEND);
+            }
 
             if(!EMPTY_TITLE) {
                 intent.putExtra(Intent.EXTRA_TITLE, getString(R.string.message_title));
@@ -213,6 +233,25 @@ public class VoiceNoteActivity extends Activity {
         } catch (NullPointerException npe) {
             Toast.makeText(this, getString(R.string.message_send_failed), Toast.LENGTH_SHORT).show();
         }
+    }
+
+
+    /*
+     * Add account information to Keep intent
+     * TODO this is not working yet, so the preference has been hidden
+     */
+    protected void setKeepExtra(final Intent intent) {
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(getBaseContext());
+
+        final String currentAccount = prefs.getString(getString(R.string.pref_key_keep_account), null);
+
+        if (DEBUG_ENABLE) {
+            Log.i("Account for Keep", currentAccount);
+        }
+
+        intent.putExtra(INTENT_EXTRA_AUTH_ACCOUNT, currentAccount);
+        intent.putExtra(INTENT_EXTRA_ACCOUNT_TYPE, INTENT_EXTRA_ACCOUNT_TYPE_VALUE);
     }
 
     public void startVoiceRecognitionActivity() {

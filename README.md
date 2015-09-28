@@ -1,11 +1,6 @@
 ![VoiceNote](https://github.com/TimMackenzie/VoiceNote/raw/master/VoiceNote.png)
 
 
-Update
-------------
-<b>As of about September 2015, an update to Google Keep makes it unable to accept the text on some devices - for example a device running Android 5.x with multiple accounts.  Instead of creating a new note, it asks the user to pick an account, and after that selection is does nothing at all.  On other devices it works.  This is the danger of using an undocumented API, and the fix isn't immediately apparent.</b>
-
-
 Introduction
 ------------
 
@@ -14,14 +9,14 @@ VoiceNote is a very simple application to demonstrate capturing the results of G
 I created this app just for myself upon getting a device with Android 4.1.  I didn't find an adequate solution to easily capture thoughts when I was, for example, at a stop light.  There are other options, but sometimes they have puzzling limitations (Google Now can fail to recognize voice when offline despite the voice recognition happening locally).
 
 VoiceNote:
--Requires no internet connection, or any other permissions.
--Can be launched from the lock screen or anywhere.  It's not a widget, so it won't take any resources until it runs.
--Can be configured to send notes directly to a few popular note apps.
+- Requires no internet connection, or any other permissions.
+- Can be launched from the lock screen or anywhere.  It's not a widget, so it won't take any resources until it runs.
+- Can be configured to send notes directly to a few popular note apps.
 
 Since I created it for myself, the interface may not be to your liking - there's no main screen at all, which is not normal Android UX.  Go ahead and extend or modify it.  Use this code a a reference, as a starting point for your project, whatever you like.  It is licensed under Apache 2.0.
 
 <del>You can get this app already built from Google Play:</del>
-Well, not yet - it's not ready for release on Google Play until the Keep issue is fixed.
+Well, not yet - hopefully soon.
 
 What does the app currently do?
 - Start capturing immediatly upon start
@@ -30,6 +25,10 @@ What does the app currently do?
  - Select destination (Keep, Evernote, Colornote, or system picker)
  - Options extend timeout if Google thinks you're done talking too soon
 
+
+Google Keep
+------------
+The Google Keep API is unpublished, and not intended for public use.  As such, compatibility is fragile.  As of ~September 2015, devices with multiple accounts stopped working when sending the text, as the account chooser screen interrupted the flow and the sent text disappeared.  So, the current workaround (when selecting Keep as the destination) injects the text into a new Keep note for the currently selected account.  This uses a different intent action, so the old method can be used (on single-account devices), by updating to code to ensure Intent.ACTION_SEND is used when sending to Keep.
 
 License
 ------------

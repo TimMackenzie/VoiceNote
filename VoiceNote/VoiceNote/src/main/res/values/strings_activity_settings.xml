@@ -27,4 +27,9 @@
     <string name="pref_destination_value_evernote">Evernote</string>
     <string name="pref_destination_value_colornote">Colornote</string>
     <string name="pref_destination_value_default">System Default</string>
+
+    <string name="pref_key_keep_account">pref_key_keep_account</string>
+    <string name="pref_title_keep_account">Google account for Keep</string>
+    <string name="pref_description_keep_account">Select account to store the notes</string>
+
 </resources>

@@ -14,9 +14,18 @@
 
     <!-- This preference simply launches an intent when selected. Use this UI sparingly, per
          design guidelines. -->
+    <!-- Select which Google account to use.  Hiding for now, as it isn't yet working for Keep -->
     <!--
-    <Preference android:title="@string/pref_title_system_sync_settings">
-        <intent android:action="android.settings.SYNC_SETTINGS" />
+    <Preference
+        android:key="@string/pref_key_keep_account"
+        android:title="@string/pref_title_keep_account"
+        android:summary="@string/pref_description_keep_account"
+    >
+        <intent
+            android:action="android.intent.action.ACCOUNT"
+            android:targetPackage="com.simplifynowsoftware.voicenote"
+            android:targetClass="com.simplifynowsoftware.voicenote.SelectAccount"
+        />
     </Preference>
     -->
 </PreferenceScreen>
