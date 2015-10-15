@@ -15,8 +15,8 @@ VoiceNote:
 
 Since I created it for myself, the interface may not be to your liking - there's no main screen at all, which is not normal Android UX.  Go ahead and extend or modify it.  Use this code a a reference, as a starting point for your project, whatever you like.  It is licensed under Apache 2.0.
 
-<del>You can get this app already built from Google Play:</del>
-Well, not yet - hopefully soon.
+You can get this app already built from Google Play:
+https://play.google.com/store/apps/details?id=com.simplifynowsoftware.voicenote
 
 What does the app currently do?
 - Start capturing immediatly upon start
