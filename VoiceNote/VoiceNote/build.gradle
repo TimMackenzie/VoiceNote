@@ -3,7 +3,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.2.3'
+        classpath 'com.android.tools.build:gradle:2.1.2'
     }
 }
 apply plugin: 'com.android.application'
@@ -15,6 +15,14 @@ repositories {
 android {
     compileSdkVersion 22
     buildToolsVersion '22.0.1'
+
+    defaultConfig {
+        applicationId "com.simplifynowsoftware.voicenote"
+        minSdkVersion 16
+        targetSdkVersion 22
+        versionCode 3
+        versionName "1.2.0"
+    }
 
     buildTypes {
         release {
@@ -30,12 +38,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project-debug.txt'
         }
     }
-
-    def config = defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 22
-    }
-    config
 }
 
 dependencies {
