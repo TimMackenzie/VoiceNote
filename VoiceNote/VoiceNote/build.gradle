@@ -1,9 +1,10 @@
 buildscript {
     repositories {
         jcenter()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.android.tools.build:gradle:3.1.4'
     }
 }
 apply plugin: 'com.android.application'
@@ -13,13 +14,13 @@ repositories {
 }
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion '25.0.2'
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
         applicationId "com.simplifynowsoftware.voicenote"
         minSdkVersion 16
-        targetSdkVersion 24
+        targetSdkVersion 27
         versionCode 3
         versionName "1.2.0"
     }
@@ -27,7 +28,7 @@ android {
     buildTypes {
         release {
             // see here for more proguard details: http://tools.android.com/tech-docs/new-build-system/resource-shrinking
-            minifyEnabled true // this replaces runProguard as of 0.14.x
+            minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
         }
