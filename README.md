@@ -32,7 +32,7 @@ The Google Keep API is unpublished, and not intended for public use.  As such, c
 
 License
 ------------
-  Copyright (C) 2013-2015 Simplify Now, LLC
+  Copyright (C) 2013-2019 Simplify Now, LLC
  
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
