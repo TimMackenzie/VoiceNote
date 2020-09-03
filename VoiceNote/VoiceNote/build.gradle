@@ -4,7 +4,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.1'
+        classpath 'com.android.tools.build:gradle:4.0.1'
     }
 }
 apply plugin: 'com.android.application'
@@ -21,7 +21,7 @@ android {
     defaultConfig {
         applicationId "com.simplifynowsoftware.voicenote"
         minSdkVersion 16
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 4
         versionName "1.2.1"
     }
