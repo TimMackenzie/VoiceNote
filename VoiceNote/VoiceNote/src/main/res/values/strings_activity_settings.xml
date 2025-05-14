@@ -20,12 +20,16 @@
         <item>@string/pref_destination_value_keep</item>
         <item>@string/pref_destination_value_evernote</item>
         <item>@string/pref_destination_value_colornote</item>
+        <item>@string/pref_destination_value_obsidian</item>
+        <item>@string/pref_destination_value_chooser</item>
         <item>@string/pref_destination_value_default</item>
     </string-array>
 
     <string name="pref_destination_value_keep">Google Keep</string>
     <string name="pref_destination_value_evernote">Evernote</string>
     <string name="pref_destination_value_colornote">Colornote</string>
+    <string name="pref_destination_value_obsidian">Obsidian</string>
+    <string name="pref_destination_value_chooser">System chooser</string>
     <string name="pref_destination_value_default">System Default</string>
 
     <string name="pref_key_keep_account">pref_key_keep_account</string>

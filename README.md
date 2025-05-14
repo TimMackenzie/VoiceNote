@@ -22,9 +22,10 @@ What does the app currently do?
 - Start capturing immediatly upon start
 - Respond to key words: help, preferences, settings, about
 - Options:
- - Select destination (Keep, Evernote, Colornote, or system picker)
+ - Select destination (Keep, Evernote, Colornote, Obsidian, system picker, or system default)
  - Options extend timeout if Google thinks you're done talking too soon
 
+Note that Obsidian has no deep link to create a note, so sent text is met by the in-app chooser for what note to add it to.
 
 Google Keep
 ------------
@@ -32,7 +33,7 @@ The Google Keep API is unpublished, and not intended for public use.  As such, c
 
 License
 ------------
-  Copyright (C) 2013-2019 Simplify Now, LLC
+  Copyright (C) 2013-2025 Simplify Now, LLC
  
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.

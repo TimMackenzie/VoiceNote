@@ -9,7 +9,7 @@
     <string name="message_subject">Captured Voice Note</string>
     <string name="help_message">Welcome to Voice Note.  Simply start the app, and speak your notes.\n\nSay \"settings\" to configure the settings, and \"help\" to see this screen.</string>
     <string name="title_activity_help">Help</string>
-    <string name="upgrade_is_compulsory">Upgrading is compulsory.\n\nYou will become like us.</string>
+    <string name="upgrade_is_compulsory">Upgrading is compulsory.\nYou will become like us.</string>
 
     <string name="about_message">Voice Note is a simple open source app to help you capture notes by speaking, and send them to your favorite note-taking app.\n\nSee the source at: https://github.com/TimMackenzie/VoiceNote</string>
 
@@ -20,6 +20,6 @@
     <string name="voicesearch_uri">market://details?id=com.google.android.voicesearch</string>
     <string name="voicesearch_install_failure">Failed to start market intent for Voice Search app</string>
 
-    <string name="message_send_failed">Failed to send message.  Try a different destination in the settings.</string>
+    <string name="message_send_failed">Failed to send message.\nTry a different destination in the settings.</string>
 
 </resources>

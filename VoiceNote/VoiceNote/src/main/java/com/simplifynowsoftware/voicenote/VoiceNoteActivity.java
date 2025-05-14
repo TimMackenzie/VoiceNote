@@ -54,6 +54,7 @@ public class VoiceNoteActivity extends Activity {
     protected static final String PACKAGE_NAME_KEEP         = "com.google.android.keep";
     protected static final String PACKAGE_NAME_COLORNOTE    = "com.socialnmobile.dictapps.notepad.color.note";
     protected static final String PACKAGE_NAME_EVERNOTE     = "com.evernote";
+    protected static final String PACKAGE_NAME_OBISDIAN     = "md.obsidian";
 
 //    protected static final String INTENT_LANDER_KEEP = "com.google.android.keep.BrowseActivity";
 
@@ -105,7 +106,7 @@ public class VoiceNoteActivity extends Activity {
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
 
-        if(!mHasRun) {
+        if (!mHasRun) {
             mHasRun = true;
             startVoiceRecognitionActivity();
         }
@@ -121,15 +122,17 @@ public class VoiceNoteActivity extends Activity {
                 str = str + arrayList.get(0);
             }
 
-            if(!handleKeywords(str)) {
+            if (!handleKeywords(str)) {
                 Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
 
-                if(FORCE_COLORNOTE) {
+                if (FORCE_COLORNOTE) {
                     sendTextToTargetPackage(str, PACKAGE_NAME_COLORNOTE);
                 } else if (FORCE_KEEP) {
                     sendTextToTargetPackage(str, PACKAGE_NAME_KEEP);
                 } else if (FORCE_EVERNOTE) {
                     sendTextToTargetPackage(str, PACKAGE_NAME_EVERNOTE);
+                } else if (mDestination.equals(getString(R.string.pref_destination_value_chooser))) {
+                    sendToChooser(str);
                 } else {
                     sendText(str);
                 }
@@ -145,19 +148,19 @@ public class VoiceNoteActivity extends Activity {
         boolean foundMatch = true; // set to false in default case below
 
         // Special cases - handle keywords
-        if(KEYWORD_PREFERENCES.equalsIgnoreCase(text)) {
+        if (KEYWORD_PREFERENCES.equalsIgnoreCase(text)) {
             Toast.makeText(this, getString(R.string.keyword_preferences), Toast.LENGTH_SHORT).show();
             launchSettings();
-        } else if(KEYWORD_SETTINGS.equalsIgnoreCase(text)) {
+        } else if (KEYWORD_SETTINGS.equalsIgnoreCase(text)) {
             Toast.makeText(this, getString(R.string.keyword_settings), Toast.LENGTH_SHORT).show();
             launchSettings();
-        } else if(KEYWORD_HELP.equalsIgnoreCase(text)) {
+        } else if (KEYWORD_HELP.equalsIgnoreCase(text)) {
             Toast.makeText(this, getString(R.string.keyword_help), Toast.LENGTH_SHORT).show();
             launchHelp();
-        } else if(KEYWORD_ABOUT.equalsIgnoreCase(text)) {
+        } else if (KEYWORD_ABOUT.equalsIgnoreCase(text)) {
             launchAbout();
-        } else if(KEYWORD_UPGRADE.equalsIgnoreCase(text)) {
-            Toast.makeText(this, getString(R.string.upgrade_is_compulsory), Toast.LENGTH_SHORT).show();
+        } else if (KEYWORD_UPGRADE.equalsIgnoreCase(text)) {
+            Toast.makeText(this, getString(R.string.upgrade_is_compulsory), Toast.LENGTH_LONG).show();
         } else {
             foundMatch = false;
         }
@@ -185,44 +188,66 @@ public class VoiceNoteActivity extends Activity {
 
     private void sendText(String text) {
         String target = null; // use null instead of pref_destination_value_default
-        if(mDestination.equals(getString(R.string.pref_destination_value_keep))) {
+        if (mDestination.equals(getString(R.string.pref_destination_value_keep))) {
             target = PACKAGE_NAME_KEEP;
         } else if (mDestination.equals(getString(R.string.pref_destination_value_evernote))) {
             target = PACKAGE_NAME_EVERNOTE;
-        } else if(mDestination.equals(getString(R.string.pref_destination_value_colornote))) {
+        } else if (mDestination.equals(getString(R.string.pref_destination_value_colornote))) {
             target = PACKAGE_NAME_COLORNOTE;
+        } else if (mDestination.equals(getString(R.string.pref_destination_value_obsidian))) {
+            target = PACKAGE_NAME_OBISDIAN;
         }
 
+        Log.d("sendText", "target: " + target);
+
         sendTextToTargetPackage(text, target);
+    }
+
+    /**
+     * Force a chooser to be shown, rather than the automatic chooser which is only shown if no
+     *     default is set
+     */
+    private void sendToChooser(String text) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType(MIMETYPE_TEXT_PLAIN);
+        intent.putExtra(Intent.EXTRA_TEXT, text);
+
+        Intent chooser = Intent.createChooser(intent, null);
+
+        try {
+            startActivity(chooser);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(this, getString(R.string.message_send_failed), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void sendTextToTargetPackage(String text, String target) {
         try
         {
-            if(DEBUG_ENABLE) {
+            if (DEBUG_ENABLE) {
                 Log.i("sendTextToTargetPackage", target);
             }
 
             Intent intent = new Intent();
 
-            if(null != target) {
+            if (null != target) {
                 intent.setPackage(target);
             }
 
             intent.setType(MIMETYPE_TEXT_PLAIN);
 
             // Extra setup for Keep - pre-select account
-            if(mDestination.equals(getString(R.string.pref_destination_value_keep))) {
+            if (mDestination.equals(getString(R.string.pref_destination_value_keep))) {
                 intent.setAction(INTENT_ACTION_KEEP);
                 //setKeepExtra(intent);
             } else {
                 intent.setAction(Intent.ACTION_SEND);
             }
 
-            if(!EMPTY_TITLE) {
+            if (!EMPTY_TITLE) {
                 intent.putExtra(Intent.EXTRA_TITLE, getString(R.string.message_title));
             }
-            if(!EMPTY_SUBJECT) {
+            if (!EMPTY_SUBJECT) {
                 intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.message_subject));
             }
             intent.putExtra(Intent.EXTRA_TEXT, text);
