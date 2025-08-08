@@ -21,6 +21,8 @@ android {
 
     defaultConfig {
         applicationId "com.simplifynowsoftware.voicenote"
+        // Leave min at 16 to retain compatibility with Android 4.1, the earliest Android version
+        //  that supports on-device voice recognition
         minSdk 16
         targetSdk 36
         versionCode 5

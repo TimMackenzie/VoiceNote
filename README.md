@@ -31,6 +31,10 @@ Google Keep
 ------------
 The Google Keep API is unpublished, and not intended for public use.  As such, compatibility is fragile.  As of ~September 2015, devices with multiple accounts stopped working when sending the text, as the account chooser screen interrupted the flow and the sent text disappeared.  So, the current workaround (when selecting Keep as the destination) injects the text into a new Keep note for the currently selected account.  This uses a different intent action, so the old method can be used (on single-account devices), by updating to code to ensure Intent.ACTION_SEND is used when sending to Keep.
 
+Tech Debt
+------------
+The code has all been refactored to Kotlin, but there is other tech debt not yet addressed such as the preferences activity.  The multi-account selection feature is currently inaccessible.  In addition, some modernization such as using the Activity Result API has been skipped because it would force increasing the min SDK from 16.
+
 License
 ------------
   Copyright (C) 2013-2025 Simplify Now, LLC
