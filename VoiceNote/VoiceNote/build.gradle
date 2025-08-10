@@ -38,8 +38,8 @@ android {
         }
 
         debug {
-            minifyEnabled true
-            shrinkResources true
+            minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project-debug.txt'
         }
     }
@@ -50,4 +50,7 @@ android {
 }
 
 dependencies {
+    //noinspection GradleDependency -- higher revisions do not support minSdk 16
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "androidx.preference:preference-ktx:1.2.1"
 }

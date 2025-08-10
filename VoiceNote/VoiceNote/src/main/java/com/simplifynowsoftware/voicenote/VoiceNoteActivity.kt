@@ -20,12 +20,12 @@ import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.SharedPreferences
-import android.net.Uri
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.speech.RecognizerIntent
 import android.util.Log
 import android.widget.Toast
+import androidx.core.net.toUri
+import androidx.preference.PreferenceManager
 
 class VoiceNoteActivity : Activity() {
     private var hasRun = false
@@ -230,7 +230,7 @@ class VoiceNoteActivity : Activity() {
         } catch (_: ActivityNotFoundException) {
             Toast.makeText(this, getString(R.string.speech_fail), Toast.LENGTH_LONG).show()
             val intent = Intent(Intent.ACTION_VIEW).apply {
-                data = Uri.parse(getString(R.string.voicesearch_uri))
+                data = getString(R.string.voicesearch_uri).toUri()
                 addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
             }
             try {

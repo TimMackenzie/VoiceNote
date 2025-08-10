@@ -3,14 +3,19 @@
     <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
          dismiss it. -->
     <!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
-    <ListPreference
-        android:key="@string/pref_key_destination"
-        android:title="@string/pref_title_destination"
-        android:entries="@array/pref_destination_titles"
-        android:entryValues="@array/pref_destination_titles"
-        android:defaultValue="Google Keep"
-        android:negativeButtonText="@null"
-        android:positiveButtonText="@null" />
+    <PreferenceCategory
+        android:title="@string/pref_header_data">
+
+        <!-- “Send notes to” list preference (etc.) goes here -->
+        <ListPreference
+            android:key="@string/pref_key_destination"
+            android:title="@string/pref_title_destination"
+            android:entries="@array/pref_destination_titles"
+            android:entryValues="@array/pref_destination_titles"
+            android:defaultValue="Google Keep"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null" />
+    </PreferenceCategory>
 
     <!-- This preference simply launches an intent when selected. Use this UI sparingly, per
          design guidelines. -->
