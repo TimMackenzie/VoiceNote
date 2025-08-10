@@ -35,6 +35,10 @@ Tech Debt
 ------------
 The code has all been refactored to Kotlin, but there is other tech debt not yet addressed such as the preferences activity.  The multi-account selection feature is currently inaccessible.  In addition, some modernization such as using the Activity Result API has been skipped because it would force increasing the min SDK from 16.
 
+Branches
+------------
+The 1.4.0 release includes the conversion to Kotlin, but resolution of the preferences-related tech debt incurred a significant increase in size - bloating the APK from 60KB to over 1MB.  This is due to the inclusion of the AndroidX libraries.  While it may be possible to trim this bloat it is unlikely to be possible to entirely eliminate it.  Therefore these changes have been applied on the androidx branch and the current release on Google Play is from the main branch.
+
 License
 ------------
   Copyright (C) 2013-2025 Simplify Now, LLC
